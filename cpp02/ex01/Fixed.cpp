@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+const int Fixed::fractional = 8;
+
 Fixed::Fixed() : raw_bits(0)
 {
     std::cout << "Default constructor called" << std::endl;
@@ -12,22 +14,22 @@ Fixed::Fixed(const Fixed& other) : raw_bits(other.raw_bits)
 
 Fixed::Fixed(const int number)
 {
-   raw_bits  =  number  << fractional;  // kan7awlo int fixed point o kaytstora fi rawbits
+   raw_bits  =  number  << fractional;
 }
 
 Fixed::Fixed(const float number)
 {
-    raw_bits = roundf(number * ( 1 << fractional));  // number * 256     nafss lkhadma dyal li 9bal ghir hadi m3a number float
+    raw_bits = roundf(number * ( 1 << fractional));
 }
 
 int Fixed::toInt( void ) const
 {
-    return (raw_bits >> fractional); //   raw_bits/256
+    return (raw_bits >> fractional);
 }
 
 float Fixed::toFloat( void ) const
 {
-    return (float(raw_bits) / (1 << fractional));   // kanchiftiw 1 bach ywali 256 o kan9assmo 3lih __ float 3la hssab return type
+    return (float(raw_bits) / (1 << fractional));
 }
 
 std::ostream &operator<<(std::ostream &output , const Fixed &fixed)

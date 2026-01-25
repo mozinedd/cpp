@@ -9,16 +9,15 @@ class Fixed
 {
 private:
     int raw_bits;
-    static const int fractional = 8;
+    static const int fractional;
 public:
     Fixed();
     Fixed(const Fixed& other);
+    Fixed& operator=(const Fixed& other);
+    ~Fixed();
+    
     Fixed(const int number);
     Fixed(const float number);
-
-    Fixed& operator=(const Fixed& other);
-
-    ~Fixed();
 
     float toFloat( void ) const;
     int toInt( void ) const;

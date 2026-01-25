@@ -31,19 +31,22 @@ void    ft_replace(const std::string& file_name, const std::string& s1, const st
         std::cout << "Error: file not created" <<std::endl;
         return;
     }
-   
-    size_t			pos = 0;
-    size_t			found;
-    while ((found = content.find(s1, pos)) != std::string::npos)
+    if (!s1.empty())
     {
-        creat_file << content.substr(pos, found - pos);
-        creat_file << s2;
-        pos = found + s1.length();
+        size_t			pos = 0;
+        size_t			found;
+        while ((found = content.find(s1, pos)) != std::string::npos)
+        {
+            creat_file << content.substr(pos, found - pos);
+            creat_file << s2;
+            pos = found + s1.length();
+        }
+        creat_file << content.substr(pos);
     }
-    creat_file << content.substr(pos);
+    else
+        creat_file << content;
     creat_file.close();
 }
-
 
 int main(int ac, char **av)
 {
@@ -54,11 +57,6 @@ int main(int ac, char **av)
         return (1);
     }
     std::string s1 = av[2];
-    if (s1.empty())
-    {
-        std::cout << "Error: s1 cannot be empty" << std::endl;
-        return (1);
-    }
     
     ft_replace(av[1], av[2], av[3]);
 

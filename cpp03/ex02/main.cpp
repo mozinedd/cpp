@@ -2,7 +2,7 @@
 
 int main()
 {
-    FragTrap a = FragTrap("moh");
+    FragTrap a = FragTrap();
     a.attack("test");
     a.beRepaired(1);
 }

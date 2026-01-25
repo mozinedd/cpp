@@ -1,8 +1,9 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap()
 {
     std::cout << "ScavTrap Default constructor called" << std::endl;
+    name = "scav";
     hit_point = 100;
     energy_points = 50;
     attack_damage = 20;
@@ -21,9 +22,9 @@ ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
+    std::cout << "ScavTrap Copy assignment operator called" << std::endl;
     if (this != &other)
         ClapTrap::operator=(other);
-    std::cout << "ScavTrap Copy assignment operator called" << std::endl;
     return (*this);
 }
 

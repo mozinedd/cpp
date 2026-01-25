@@ -1,8 +1,9 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap()
+FragTrap::FragTrap()
 {
     std::cout << "FragTrap Default constructor called" << std::endl;
+    name = "frag";
     hit_point = 100;
     energy_points = 100;
     attack_damage = 30;
@@ -21,9 +22,9 @@ FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other)
 
 FragTrap& FragTrap::operator=(const FragTrap& other)
 {
+    std::cout << "FragTrap Copy assignment operator called" << std::endl;
     if (this != &other)
         ClapTrap::operator=(other);
-    std::cout << "FragTrap Copy assignment operator called" << std::endl;
     return (*this);
 }
 

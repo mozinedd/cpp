@@ -2,8 +2,7 @@
 
 int main()
 {
-    ClapTrap a = ClapTrap("x");
-    a.attack("y");
+    ClapTrap a = ClapTrap();
     a.attack("y");
     a.beRepaired(1);
     a.attack("y");

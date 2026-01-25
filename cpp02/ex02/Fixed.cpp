@@ -10,12 +10,14 @@ Fixed::Fixed(const Fixed& other) : raw_bits(other.raw_bits)
     std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int number){
+Fixed::Fixed(const int number)
+{
    raw_bits  =  number  << fractional;
 }
 
-Fixed::Fixed(const float number){
-    raw_bits = roundf(number * ( 1 << fractional));  // number * 256
+Fixed::Fixed(const float number)
+{
+    raw_bits = roundf(number * ( 1 << fractional));
 }
 
 int Fixed::toInt( void ) const
@@ -23,11 +25,13 @@ int Fixed::toInt( void ) const
     return (raw_bits >> fractional);
 }
 
-float Fixed::toFloat( void ) const {
-    return (float(raw_bits) / (1 << fractional));   // float((raw_bits) / ( 1 >> franctional))
+float Fixed::toFloat( void ) const 
+{
+    return (float(raw_bits) / (1 << fractional));
 }
 
-std::ostream &operator<<(std::ostream &output , const Fixed &fixed){
+std::ostream &operator<<(std::ostream &output , const Fixed &fixed)
+{
     output << fixed.toFloat();
     return output;
 }
@@ -53,13 +57,13 @@ int Fixed::getRawBits( void ) const
 
 void Fixed::setRawBits( int const raw )
 {
+    std::cout << "setRawBits member function called" << std::endl;
     raw_bits = raw;
 }
 
-
 bool Fixed::operator>(const Fixed &other) const
 {
-    if (this->toFloat() > other.toFloat())
+    if (this->getRawBits() > other.getRawBits())
         return true;
     else
         return false;
@@ -67,7 +71,7 @@ bool Fixed::operator>(const Fixed &other) const
 
 bool Fixed::operator<(const Fixed& other) const
 {
-   if (this->toFloat() < other.toFloat())
+   if (this->getRawBits() < other.getRawBits())
        return (true);
    else
        return (false);
@@ -75,7 +79,7 @@ bool Fixed::operator<(const Fixed& other) const
 
 bool Fixed::operator>=(const Fixed& other) const
 {
-   if (this->toFloat() >= other.toFloat())
+   if (this->getRawBits() >= other.getRawBits())
        return (true);
    else
        return (false);
@@ -83,7 +87,7 @@ bool Fixed::operator>=(const Fixed& other) const
 
 bool Fixed::operator<=(const Fixed& other) const
 {
-   if (this->toFloat() <= other.toFloat())
+   if (this->getRawBits() <= other.getRawBits())
        return (true);
    else
        return (false);
@@ -91,7 +95,7 @@ bool Fixed::operator<=(const Fixed& other) const
 
 bool Fixed::operator==(const Fixed& other) const
 {
-   if (this->toFloat() == other.toFloat())
+   if (this->getRawBits() == other.getRawBits())
        return (true);
    else
        return (false);
@@ -99,7 +103,7 @@ bool Fixed::operator==(const Fixed& other) const
 
 bool Fixed::operator!=(const Fixed& other) const
 {
-   if (this->toFloat() != other.toFloat())
+   if (this->getRawBits() != other.getRawBits())
        return (true);
    else
        return (false);
@@ -129,7 +133,7 @@ Fixed Fixed::operator/(const Fixed& other) const
     return (ret);
 }
 
-Fixed& Fixed::operator++(void)  // hadak li 3andi fi memory  zid fih o returnih
+Fixed& Fixed::operator++(void)
 {
     raw_bits++;
 

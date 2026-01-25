@@ -2,7 +2,7 @@
 
 int main()
 {
-    ScavTrap a = ScavTrap("moh");
+    ScavTrap a = ScavTrap();
     a.attack("test");
     a.beRepaired(1);
 }

@@ -17,3 +17,4 @@
  Weapon::Weapon(std::string t): type(t)
  {
  }
+ 

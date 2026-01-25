@@ -7,9 +7,9 @@ class ClapTrap
 {
     private:
         std::string name;
-        int hit_point;
-        int energy_points;
-        int attack_damage;
+        unsigned int hit_point;
+        unsigned int energy_points;
+        unsigned int attack_damage;
     public:
         ClapTrap();
         ClapTrap(const std::string& x);
@@ -20,10 +20,6 @@ class ClapTrap
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-
 };
-
-
-
 
 #endif

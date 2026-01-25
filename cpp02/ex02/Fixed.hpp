@@ -13,12 +13,11 @@ private:
 public:
     Fixed();
     Fixed(const Fixed& other);
+    Fixed& operator=(const Fixed& other);
+    ~Fixed();
+    
     Fixed(const int number);
     Fixed(const float number);
-
-    Fixed& operator=(const Fixed& other);
-
-    ~Fixed();
 
     float toFloat( void ) const;
     int toInt( void ) const;
